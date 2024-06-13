@@ -39,8 +39,8 @@ jobs:
     - name: Build the Solution
       run: msbuild BugGuardian.MVC.sln /p:Configuration=Release /p:WebPublishMethod=FileSystem
 
-   # - name: Publish
-    #  run: dotnet publish --configuration Release --no-restore --output ./publish
+    - name: Publish Project
+      run: msbuild /p:DeployOnBuild=true /p:Configuration=Release /p:Platform="Any CPU" BugGuardian.MVC/BugGuardian.MVC.csproj /p:OutputPath=./publish
 
     - uses: actions/upload-artifact@v3
       with:
