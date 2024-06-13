@@ -35,5 +35,11 @@ jobs:
     - name: Build the Solution
       run: msbuild BugGuardian.MVC.sln /p:Configuration=Release
 
-    #Testing....for fork
+    - name: Publish
+      run: dotnet publish --configuration Release --no-restore --output ./publish
+
+    - uses: actions/upload-artifact@v3
+      with:
+        name: dotnet-artifact
+        path: ./publish/**/*
     
